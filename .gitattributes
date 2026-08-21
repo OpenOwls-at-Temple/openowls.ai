@@ -1,0 +1,4 @@
+# Normalize line endings to LF for all text files (keeps _redirects/_headers
+# and web assets consistent across Windows/macOS/Linux and on Cloudflare Pages).
+* text=auto eol=lf
+*.svg text eol=lf

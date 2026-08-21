@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects.
+# Send the www host to the bare apex so there's one canonical URL.
+https://www.openowls.ai/*  https://openowls.ai/:splat  301

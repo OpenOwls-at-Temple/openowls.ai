@@ -1,0 +1,10 @@
+# Cloudflare Pages response headers.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# Cache hashed-free static assets modestly; tweak later if you add fingerprinting.
+/assets/*
+  Cache-Control: public, max-age=3600

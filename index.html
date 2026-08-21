@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenOwls — Temple Owls Building AI Magic</title>
+  <meta name="description" content="The home of OpenOwls at Temple University — a directory of the AI apps our students have built and deployed." />
+
+  <!-- Open Graph / social -->
+  <meta property="og:title" content="OpenOwls — Temple Owls Building AI Magic" />
+  <meta property="og:description" content="A directory of the AI apps our students have built and deployed." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://openowls.ai" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="logo">
+        <span class="owl-icon">🦉</span>
+        <span>OpenOwls</span>
+      </div>
+
+      <h1>Temple Owls building<br /><span class="accent">AI magic</span>.</h1>
+      <p class="tagline">
+        A student group at Temple University shipping real apps with AI coding tools.
+        Here's everything we've built — pick one and jump in.
+      </p>
+      <span class="live-count" id="live-count"></span>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="grid" id="grid"><!-- cards injected by render.js --></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-links">
+        <a href="https://openowls-at-temple.github.io">About OpenOwls</a>
+        <a href="https://openowls-at-temple.github.io/blog/">Blog</a>
+        <a href="https://github.com/OpenOwls-at-Temple">GitHub</a>
+        <a href="mailto:openowls@temple.edu">Contact</a>
+      </div>
+      <div>© <span id="year">2026</span> OpenOwls at Temple University</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/projects.js"></script>
+  <script src="assets/js/render.js"></script>
+  <script>
+    (function () {
+      var y = document.getElementById("year");
+      // Date is fine at runtime in the browser; static build never sees it.
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
