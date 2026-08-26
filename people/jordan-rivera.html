@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jordan Rivera — OpenOwls Member</title>
+  <meta name="description" content="Jordan Rivera, OpenOwls at Temple University — team lead on Owl Jeopardy. Who they are, their strengths, and how they build with AI." />
+
+  <meta property="og:title" content="Jordan Rivera — OpenOwls at Temple" />
+  <meta property="og:description" content="Team lead on Owl Jeopardy. A CS student building real apps with AI at Temple University." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://openowls.ai/people/jordan-rivera.html" />
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/profile.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <!-- ── TOP NAV ── -->
+  <header class="topnav">
+    <div class="wrap">
+      <a class="logo" href="../index.html" style="color:var(--white)">
+        <span class="owl-icon">🦉</span><span>OpenOwls</span>
+      </a>
+      <nav>
+        <a href="../index.html" class="hide-sm">All apps</a>
+        <a href="../projects/">Projects</a>
+        <a href="../people/">People</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+      <article class="article">
+
+        <p class="breadcrumb">
+          <a href="../index.html">Home</a><span>›</span>
+          <a href="../people/">People</a><span>›</span>
+          Jordan Rivera
+        </p>
+
+        <!-- ── HERO ── -->
+        <section class="member-hero">
+          <div class="portrait">JR</div>
+          <div>
+            <span class="kicker">OpenOwls Member</span>
+            <h1>Jordan Rivera</h1>
+            <p class="role-line">Team Lead · Front-end &amp; real-time systems</p>
+
+            <div class="meta-chips">
+              <span class="chip"><span class="k">Year:</span> Junior</span>
+              <span class="chip"><span class="k">Major:</span> Computer Science</span>
+              <span class="chip"><span class="k">Joined:</span> Fall 2025</span>
+              <span class="chip"><span class="k">Looking for:</span> Summer '26 internship</span>
+            </div>
+
+            <p class="intro-quote">
+              "I like the messy middle of a project — the part where the demo works but
+              nothing's clean yet, and you get to figure out why."
+            </p>
+          </div>
+        </section>
+
+        <div class="linkrow">
+          <a href="https://github.com/OpenOwls-at-Temple" rel="noopener">🔗 GitHub</a>
+          <a href="#" rel="noopener">💼 LinkedIn</a>
+          <a href="mailto:openowls@temple.edu">✉️ Email</a>
+        </div>
+
+        <hr class="rule" />
+
+        <!-- ── WHO I AM ── -->
+        <section class="section">
+          <span class="kicker">Who I am</span>
+          <h2>A little about me</h2>
+          <p>
+            I'm a junior CS major at Temple who came to programming through building
+            small games in high school. I joined OpenOwls because I wanted to ship
+            something real people would actually use — not just coursework that gets
+            graded and forgotten. Outside of code I run the intramural table-tennis
+            ladder, which is where I learned that a good bracket system is 80% of a
+            good tournament.
+          </p>
+        </section>
+
+        <!-- ── STRENGTHS ── -->
+        <section class="section">
+          <span class="kicker">What I bring</span>
+          <h2>My strengths</h2>
+          <ul>
+            <li><strong>Front-end that feels good:</strong> I care about the small interactions — buzz-in feedback, loading states, the stuff that makes a demo land.</li>
+            <li><strong>Real-time systems:</strong> WebSockets, syncing state across screens, and handling the reconnect edge cases most people skip.</li>
+            <li><strong>Keeping a team moving:</strong> as team lead I ran our stand-ups and kept the spec honest when scope tried to creep.</li>
+          </ul>
+        </section>
+
+        <!-- ── HOW I USE AI ── -->
+        <section class="section">
+          <span class="kicker">How I work</span>
+          <h2>How I use AI</h2>
+          <p>
+            I treat AI as a fast pair-programmer, not an autopilot. My rhythm is to
+            write the spec and the interface first, then use Claude to scaffold the
+            implementation and to rubber-duck the tricky logic — the buzz-timing race
+            condition on Owl Jeopardy took a few rounds of "here's what's happening,
+            what am I missing?" before it clicked.
+          </p>
+          <p>
+            Where it saves me the most time is the boring-but-necessary work: writing
+            tests, converting a rough function into clean typed code, and drafting the
+            first version of docs. I still read every line before it ships.
+          </p>
+          <blockquote class="pull">
+            "AI got me to a working prototype fast — but understanding <em>why</em> it
+            worked was still on me. That's the part that made me a better engineer."
+          </blockquote>
+        </section>
+
+        <hr class="rule" />
+
+        <!-- ── PROJECTS SHIPPED ── -->
+        <section class="section">
+          <span class="kicker">On the board</span>
+          <h2>Projects I've shipped</h2>
+          <div class="xlink-grid">
+            <a class="xlink" href="../projects/owl-jeopardy.html">
+              <span class="xi">🎯</span>
+              <span class="xt"><span class="xn">Owl Jeopardy</span><span class="xr">Team lead · Front end</span></span>
+            </a>
+            <a class="xlink" href="../projects/">
+              <span class="xi">📈</span>
+              <span class="xt"><span class="xn">Owl Street</span><span class="xr">Contributor · Charts UI</span></span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ── A HARD PROBLEM ── -->
+        <section class="section">
+          <span class="kicker">Proud of</span>
+          <h2>A hard problem I cracked</h2>
+          <p>
+            On Owl Jeopardy, two players buzzing a fraction of a second apart were
+            sometimes both scored as "first." I traced it to us trusting the client's
+            clock. The fix — timestamp every buzz on the server the instant it arrives,
+            and resolve ties there — was small in code but took real digging to find.
+            It's the moment the project stopped feeling like a class assignment and
+            started feeling like software.
+          </p>
+        </section>
+
+        <!-- ── WHAT'S NEXT ── -->
+        <section class="section">
+          <span class="kicker">What's next</span>
+          <h2>Where I'm headed</h2>
+          <p>
+            I'm looking for a Summer 2026 internship in front-end or full-stack work,
+            ideally somewhere I can keep building real-time, interactive products. If
+            you're an OpenOwl who wants to pair on something, I'm always up for it —
+            Owls helping Owls.
+          </p>
+        </section>
+
+      </article>
+
+      <p class="tpl-note">
+        🦉 <strong>Template page.</strong> This is placeholder content for one member.
+        Every OpenOwl gets a page like this with their own words — a shareable link
+        they can put on a resume or LinkedIn. Swap in the real headshot, bio, and links.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-links">
+        <a href="../index.html">All apps</a>
+        <a href="../projects/">Projects</a>
+        <a href="../people/">People</a>
+        <a href="https://github.com/OpenOwls-at-Temple">GitHub</a>
+      </div>
+      <div>© <span id="year">2026</span> OpenOwls at Temple University</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () { var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear(); })();
+  </script>
+</body>
+</html>

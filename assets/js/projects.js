@@ -36,7 +36,7 @@ window.OPENOWLS_PROJECTS = [
     description:
       "A learning-focused trading platform — live equity charts, paper trading, price alerts, and AI market insights.",
     tags: ["React", "Python", "Claude AI", "Finance API"],
-    live: false,
+    live: true,
   },
   {
     name: "Ask Clara",

@@ -1,0 +1,221 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   OpenOwls — profile pages (project detail + member spotlight)
+   ───────────────────────────────────────────────────────────────────────
+   Loaded AFTER main.css, so it inherits the navy/gold theme variables
+   (--navy, --gold, --card-bg, fonts, etc.) and only adds the page-specific
+   "magazine profile" layout used by /projects/*.html and /people/*.html.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── SITE NAV (slim top bar on inner pages) ── */
+.topnav {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(13, 27, 46, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topnav .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 0.85rem; padding-bottom: 0.85rem;
+}
+.topnav .logo { margin-bottom: 0; font-size: 1.1rem; }
+.topnav .logo .owl-icon { width: 32px; height: 32px; font-size: 1rem; }
+.topnav nav { display: flex; gap: 1.4rem; align-items: center; }
+.topnav nav a {
+  color: var(--gray-light); font-weight: 500; font-size: 0.92rem;
+}
+.topnav nav a:hover { color: var(--gold); }
+
+/* ── generic inner-page shell ── */
+.page { position: relative; z-index: 1; flex: 1 0 auto; }
+.article { max-width: 760px; margin: 0 auto; }
+
+.breadcrumb {
+  font-size: 0.82rem; color: var(--gray);
+  letter-spacing: 0.02em; margin: 2.2rem 0 1.4rem;
+}
+.breadcrumb a { color: var(--gray-light); }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb span { color: var(--gray); margin: 0 0.45rem; }
+
+/* kicker label above a heading */
+.kicker {
+  display: inline-block; font-family: var(--font-display);
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.7rem;
+}
+
+/* ── PROJECT HERO BAND ── */
+.proj-hero { padding: 1rem 0 2rem; }
+.proj-hero .status-row {
+  display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.4rem;
+}
+.proj-hero .proj-emoji {
+  width: 64px; height: 64px; border-radius: 16px;
+  background: var(--navy-light); display: flex; align-items: center;
+  justify-content: center; font-size: 2rem; flex-shrink: 0;
+}
+.proj-hero h1 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.04;
+  letter-spacing: -0.02em; margin-bottom: 0.9rem;
+}
+.proj-hero .lede {
+  font-size: clamp(1.05rem, 2.4vw, 1.28rem); color: var(--gray-light);
+  max-width: 40rem; margin-bottom: 1.5rem;
+}
+.stack-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.6rem; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.95rem;
+  padding: 0.7rem 1.3rem; border-radius: 10px;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s;
+}
+.btn--gold { background: var(--gold); color: var(--navy); }
+.btn--gold:hover { color: var(--navy); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(245,197,24,0.25); }
+.btn--ghost { border: 1px solid var(--border); color: var(--gray-light); }
+.btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* screenshot / demo placeholder frame */
+.shot {
+  border: 1px solid var(--border); border-radius: 16px;
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 14px, transparent 14px 28px),
+    var(--card-bg);
+  aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center;
+  color: var(--gray); font-size: 0.9rem; text-align: center; padding: 1rem;
+  margin: 2.2rem 0;
+}
+.shot span { max-width: 22rem; }
+
+/* ── CONTENT SECTIONS ── */
+.section { margin: 2.8rem 0; }
+.section h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(1.5rem, 3.5vw, 2rem); letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+.section p { color: var(--gray-light); margin-bottom: 1rem; }
+.section p:last-child { margin-bottom: 0; }
+.section ul { color: var(--gray-light); padding-left: 1.2rem; margin-bottom: 1rem; }
+.section ul li { margin-bottom: 0.5rem; }
+.section strong { color: var(--white); }
+
+/* pull quote */
+.pull {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.3rem, 3.6vw, 1.9rem); line-height: 1.3;
+  color: var(--white); border-left: 3px solid var(--gold);
+  padding: 0.3rem 0 0.3rem 1.4rem; margin: 2.4rem 0;
+  letter-spacing: -0.01em;
+}
+.pull cite { display: block; font-family: var(--font-body); font-style: normal;
+  font-weight: 400; font-size: 0.92rem; color: var(--gold); margin-top: 0.8rem; }
+
+/* ── CONTRIBUTOR CARDS (project team) ── */
+.team-grid {
+  display: grid; gap: 1.2rem; margin-top: 1.6rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.contrib {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.5rem;
+}
+.contrib-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.1rem; }
+.avatar {
+  width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 1.15rem;
+  color: var(--navy); background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+}
+.contrib-head .who { line-height: 1.25; }
+.contrib-head .who .name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--white); }
+.contrib-head .who .role { font-size: 0.82rem; color: var(--gold); }
+.contrib .field { margin-bottom: 0.85rem; }
+.contrib .field:last-child { margin-bottom: 0; }
+.contrib .field .label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 0.25rem;
+}
+.contrib .field p { font-size: 0.9rem; color: var(--gray-light); margin: 0; }
+.contrib .profile-link { font-size: 0.85rem; font-weight: 600; margin-top: 1rem; display: inline-block; }
+
+/* ── MEMBER PROFILE HERO ── */
+.member-hero {
+  display: grid; grid-template-columns: 220px 1fr; gap: 2.2rem;
+  align-items: start; padding: 1rem 0 1rem;
+}
+.portrait {
+  width: 220px; height: 220px; border-radius: 20px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 4.2rem;
+  color: var(--navy);
+  background: linear-gradient(150deg, var(--gold) 0%, var(--gold-dim) 100%);
+  border: 1px solid var(--border); position: relative;
+}
+.portrait::after {
+  content: "Headshot goes here"; position: absolute; bottom: 10px;
+  font-family: var(--font-body); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  color: rgba(13,27,46,0.6);
+}
+.member-hero h1 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2.1rem, 5.5vw, 3.2rem); line-height: 1.03;
+  letter-spacing: -0.02em; margin-bottom: 0.5rem;
+}
+.member-hero .role-line { font-size: 1.05rem; color: var(--gold); font-weight: 600; margin-bottom: 1.1rem; }
+.meta-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+.chip {
+  font-size: 0.78rem; color: var(--gray-light);
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-radius: 999px; padding: 0.3rem 0.75rem;
+}
+.chip .k { color: var(--gray); }
+.member-hero .intro-quote {
+  font-family: var(--font-display); font-weight: 600; font-size: 1.15rem;
+  color: var(--white); line-height: 1.35; letter-spacing: -0.01em;
+}
+
+/* ── cross-link cards (projects a member shipped) ── */
+.xlink-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); margin-top: 1.4rem; }
+.xlink {
+  display: flex; align-items: center; gap: 0.9rem;
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.1rem 1.2rem; color: var(--white);
+  transition: transform 0.16s ease, border-color 0.16s ease;
+}
+.xlink:hover { transform: translateY(-3px); border-color: rgba(245,197,24,0.45); color: var(--white); }
+.xlink .xi {
+  width: 42px; height: 42px; border-radius: 11px; background: var(--navy-light);
+  display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+}
+.xlink .xt .xn { font-family: var(--font-display); font-weight: 700; font-size: 1rem; }
+.xlink .xt .xr { font-size: 0.8rem; color: var(--gold); }
+
+/* ── link row (github / linkedin / etc) ── */
+.linkrow { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1rem; }
+.linkrow a {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 0.55rem 1rem; font-size: 0.88rem; font-weight: 600; color: var(--gray-light);
+}
+.linkrow a:hover { border-color: var(--gold); color: var(--gold); }
+
+/* divider */
+.rule { border: none; border-top: 1px solid var(--border); margin: 2.6rem 0; }
+
+/* placeholder note banner */
+.tpl-note {
+  background: rgba(245,197,24,0.06); border: 1px dashed rgba(245,197,24,0.35);
+  border-radius: 12px; padding: 0.8rem 1.1rem; margin: 1.6rem auto 0; max-width: 760px;
+  font-size: 0.82rem; color: var(--gold-pale);
+}
+
+@media (max-width: 720px) {
+  .member-hero { grid-template-columns: 1fr; gap: 1.4rem; }
+  .portrait { width: 150px; height: 150px; font-size: 3rem; }
+  .topnav nav { gap: 1rem; }
+  .topnav nav a.hide-sm { display: none; }
+}

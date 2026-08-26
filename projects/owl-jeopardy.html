@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owl Jeopardy — OpenOwls Project</title>
+  <meta name="description" content="How OpenOwls students built Owl Jeopardy: an AI-powered Jeopardy review game that generates its board straight from a Canvas course. Meet the team and read their build story." />
+
+  <meta property="og:title" content="Owl Jeopardy — an OpenOwls project" />
+  <meta property="og:description" content="An AI-powered Jeopardy review game built from your Canvas course. Built by Temple Owls in a 4-week sprint." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://openowls.ai/projects/owl-jeopardy.html" />
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/profile.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <!-- ── TOP NAV ── -->
+  <header class="topnav">
+    <div class="wrap">
+      <a class="logo" href="../index.html" style="color:var(--white)">
+        <span class="owl-icon">🦉</span><span>OpenOwls</span>
+      </a>
+      <nav>
+        <a href="../index.html" class="hide-sm">All apps</a>
+        <a href="../projects/">Projects</a>
+        <a href="../people/">People</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+      <article class="article">
+
+        <p class="breadcrumb">
+          <a href="../index.html">Home</a><span>›</span>
+          <a href="../projects/">Projects</a><span>›</span>
+          Owl Jeopardy
+        </p>
+
+        <!-- ── HERO ── -->
+        <section class="proj-hero">
+          <div class="status-row">
+            <div class="proj-emoji">🎯</div>
+            <span class="badge badge--live">Live</span>
+            <span class="chip">Sprint 3 · Spring 2026</span>
+          </div>
+
+          <h1>Owl Jeopardy</h1>
+          <p class="lede">
+            An AI-powered Jeopardy review game that builds its whole board straight
+            from a Canvas course — no manual question entry. Instructors point it at
+            a module; students play a live, buzzer-style review session minutes later.
+          </p>
+
+          <div class="stack-row">
+            <span class="tag">React</span>
+            <span class="tag">Canvas API</span>
+            <span class="tag">Claude AI</span>
+            <span class="tag">WebSockets</span>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn--gold" href="https://owl-jeopardy.openowls.ai" rel="noopener">Open the app →</a>
+            <a class="btn btn--ghost" href="https://github.com/OpenOwls-at-Temple" rel="noopener">View source</a>
+          </div>
+        </section>
+
+        <div class="shot"><span>📸 Screenshot or short demo GIF of the game board goes here</span></div>
+
+        <!-- ── WHAT IT DOES ── -->
+        <section class="section">
+          <span class="kicker">What it does</span>
+          <h2>Turns a course module into a game in one click</h2>
+          <p>
+            Review sessions usually mean an instructor hand-typing dozens of questions
+            into a slide template. Owl Jeopardy removes that step entirely. A teaching
+            assistant selects a Canvas module, and the app reads the module's pages,
+            assignments, and readings, then asks Claude to draft a balanced board —
+            five categories, five clues each, scaled by difficulty.
+          </p>
+          <ul>
+            <li><strong>Canvas-native:</strong> pulls real course content through the Canvas API, so questions actually match what was taught.</li>
+            <li><strong>Live &amp; multiplayer:</strong> teams buzz in over WebSockets from their own phones; the host screen keeps score in real time.</li>
+            <li><strong>Editable before play:</strong> the instructor can rewrite or swap any AI-drafted clue before the game starts.</li>
+          </ul>
+        </section>
+
+        <!-- ── HOW IT'S BUILT ── -->
+        <section class="section">
+          <span class="kicker">Under the hood</span>
+          <h2>How it's built</h2>
+          <p>
+            A React front end drives both the host board and the player buzzers, with a
+            lightweight Python service brokering Canvas content and Claude calls. The AI's
+            job is narrow and well-specified: given cleaned course text, return structured
+            JSON for a validated board — which keeps the output predictable and easy to edit.
+          </p>
+          <p>
+            Real-time play runs over WebSockets so buzz-ins feel instant, and game state is
+            kept server-side so a dropped phone can rejoin mid-round.
+          </p>
+        </section>
+
+        <!-- ── PULL QUOTE ── -->
+        <blockquote class="pull">
+          "The hardest part wasn't the AI — it was making sure two people who buzz a
+          quarter-second apart get scored fairly. That taught us more than any prompt did."
+          <cite>— from the team retro</cite>
+        </blockquote>
+
+        <hr class="rule" />
+
+        <!-- ── THE TEAM ── -->
+        <section class="section">
+          <span class="kicker">The team</span>
+          <h2>Who built it</h2>
+          <p>Owl Jeopardy was shipped by three OpenOwls in a four-week sprint. Each card links to that student's full profile.</p>
+
+          <div class="team-grid">
+
+            <div class="contrib">
+              <div class="contrib-head">
+                <div class="avatar">JR</div>
+                <div class="who">
+                  <div class="name">Jordan Rivera</div>
+                  <div class="role">Team lead · Front end</div>
+                </div>
+              </div>
+              <div class="field">
+                <span class="label">What they owned</span>
+                <p>The host board and player-buzzer UI, plus the WebSocket game loop that keeps every screen in sync.</p>
+              </div>
+              <div class="field">
+                <span class="label">Biggest challenge</span>
+                <p>Fair buzz-in timing across phones on different networks. Solved it by timestamping buzzes on the server, not the client.</p>
+              </div>
+              <a class="profile-link" href="../people/jordan-rivera.html">Read Jordan's profile →</a>
+            </div>
+
+            <div class="contrib">
+              <div class="contrib-head">
+                <div class="avatar">PP</div>
+                <div class="who">
+                  <div class="name">Priya Patel</div>
+                  <div class="role">AI &amp; content pipeline</div>
+                </div>
+              </div>
+              <div class="field">
+                <span class="label">What they owned</span>
+                <p>The Canvas-to-board pipeline: fetching module content, cleaning it, and prompting Claude for structured, editable clues.</p>
+              </div>
+              <div class="field">
+                <span class="label">Biggest challenge</span>
+                <p>Getting reliable JSON out of the model every time. Landed on a strict schema plus a validation-and-retry step.</p>
+              </div>
+              <a class="profile-link" href="../people/index.html">Read Priya's profile →</a>
+            </div>
+
+            <div class="contrib">
+              <div class="contrib-head">
+                <div class="avatar">MC</div>
+                <div class="who">
+                  <div class="name">Marcus Chen</div>
+                  <div class="role">Backend &amp; Canvas API</div>
+                </div>
+              </div>
+              <div class="field">
+                <span class="label">What they owned</span>
+                <p>The Python service, Canvas API auth, and the game-state store that lets a dropped player rejoin mid-round.</p>
+              </div>
+              <div class="field">
+                <span class="label">Biggest challenge</span>
+                <p>Canvas API rate limits during a live demo. Added a caching layer so a course only gets fetched once per session.</p>
+              </div>
+              <a class="profile-link" href="../people/index.html">Read Marcus's profile →</a>
+            </div>
+
+          </div>
+        </section>
+
+        <hr class="rule" />
+
+        <!-- ── SPRINT STORY ── -->
+        <section class="section">
+          <span class="kicker">The sprint story</span>
+          <h2>Four weeks, idea to demo</h2>
+          <p>
+            <strong>Week 1 — Spec.</strong> The team wrote the spec first: what a "board"
+            is, what the Canvas input looks like, and where a human stays in the loop.
+          </p>
+          <p>
+            <strong>Week 2 — Pipeline.</strong> Canvas content flowing in, first AI-drafted
+            boards coming out — rough, but real.
+          </p>
+          <p>
+            <strong>Week 3 — Live play.</strong> WebSockets, buzzers, and scoring. This is
+            where the timing problems surfaced and got solved.
+          </p>
+          <p>
+            <strong>Week 4 — Polish &amp; demo.</strong> Editing UI, caching for the live
+            demo, and a run in front of a real class.
+          </p>
+        </section>
+
+      </article>
+
+      <p class="tpl-note">
+        🦉 <strong>Template page.</strong> Names, quotes, and the screenshot above are
+        placeholders — swap in the real team, a real demo GIF, and the actual retro
+        quotes. This same layout works for every project in the directory.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-links">
+        <a href="../index.html">All apps</a>
+        <a href="../projects/">Projects</a>
+        <a href="../people/">People</a>
+        <a href="https://github.com/OpenOwls-at-Temple">GitHub</a>
+      </div>
+      <div>© <span id="year">2026</span> OpenOwls at Temple University</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () { var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear(); })();
+  </script>
+</body>
+</html>
