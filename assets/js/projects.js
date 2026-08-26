@@ -39,21 +39,21 @@ window.OPENOWLS_PROJECTS = [
     live: false,
   },
   {
-    name: "Accessibility Automator",
-    icon: "♿",
-    url: "https://accessibility-automator.openowls.ai",
-    description:
-      "Scans course slide decks for WCAG violations — missing alt text, low contrast, broken reading order — and suggests AI fixes.",
-    tags: ["Python", "Canvas API", "Claude AI", "WCAG"],
-    live: false,
-  },
-  {
     name: "Ask Clara",
     icon: "💼",
     url: "https://ask-clara.openowls.ai",
     description:
       "A personalized AI career coach for Temple CS seniors — resume analysis, job-match scoring, and interview prep.",
     tags: ["React", "Python", "Claude AI"],
+    live: false,
+  },
+  {
+    name: "Accessibility Automator",
+    icon: "♿",
+    url: "https://accessibility-automator.openowls.ai",
+    description:
+      "Scans course slide decks for WCAG violations — missing alt text, low contrast, broken reading order — and suggests AI fixes.",
+    tags: ["Python", "Canvas API", "Claude AI", "WCAG"],
     live: false,
   },
 ];
