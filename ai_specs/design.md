@@ -88,8 +88,8 @@ OpenOwls Hub is a content-first static showcase with a small, consistent design 
 
 | Question | Status | Owner |
 |----------|--------|-------|
-| For the two-panel reader, is detail content loaded from the standalone HTML pages (fetch/iframe) or generated from JS data registries? | Open — decide before building F4 | Alex Pang |
-| Do we adopt JS data registries (`people.js`, project-detail data) or keep hand-authored standalone pages as the source of truth? | Open | Alex Pang |
+| For the two-panel reader, is detail content loaded from the standalone HTML pages (fetch/iframe) or generated from JS data registries? | **Resolved (2026-08-26)** — the reader **fetches** each standalone page and injects its `<article class="article">` into the right pane. Not iframe: the standalone pages carry their own nav/footer (which would nest), and `_headers` sets `X-Frame-Options: DENY`, which blocks same-origin framing. | Alex Pang |
+| Do we adopt JS data registries (`people.js`, project-detail data) or keep hand-authored standalone pages as the source of truth? | **Resolved (2026-08-26)** — standalone pages stay the single source of truth (and the shareable resume/LinkedIn URL). The registries (`projects.js`, `people.js`) hold only the *index* (name, slug, optional `page` pointer), not the content. | Alex Pang |
 
 ---
 

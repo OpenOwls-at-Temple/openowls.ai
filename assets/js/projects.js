@@ -17,6 +17,9 @@
      tags        Short tech/stack labels.
      live        true  → clickable card linking to `url`.
                  false → shown as "Coming soon" (not clickable).
+     page        (optional) detail page in projects/, e.g. "owl-jeopardy.html".
+                 Set once the app has a built project page; the Projects reader
+                 shows it in the right pane (otherwise it shows a short blurb).
    ═══════════════════════════════════════════════════════════════════════ */
 
 window.OPENOWLS_PROJECTS = [
@@ -25,9 +28,10 @@ window.OPENOWLS_PROJECTS = [
     icon: "🎯",
     url: "https://owl-jeopardy.openowls.ai",
     description:
-      "An AI-powered Jeopardy review game that builds its board straight from your Canvas course — no manual question entry.",
+      "Build and share Jeopardy-style review games — create your own question banks and game boards, then share them and play. (Phase 2: import from a Canvas course and auto-generate questions with Claude.)",
     tags: ["React", "Canvas API", "Claude AI", "WebSockets"],
     live: true,
+    page: "owl-jeopardy.html",
   },
   {
     name: "Owl Street",

@@ -6,24 +6,7 @@
    "magazine profile" layout used by /projects/*.html and /people/*.html.
    ═══════════════════════════════════════════════════════════════════════ */
 
-/* ── SITE NAV (slim top bar on inner pages) ── */
-.topnav {
-  position: sticky; top: 0; z-index: 20;
-  background: rgba(13, 27, 46, 0.82);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-.topnav .wrap {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-top: 0.85rem; padding-bottom: 0.85rem;
-}
-.topnav .logo { margin-bottom: 0; font-size: 1.1rem; }
-.topnav .logo .owl-icon { width: 32px; height: 32px; font-size: 1rem; }
-.topnav nav { display: flex; gap: 1.4rem; align-items: center; }
-.topnav nav a {
-  color: var(--gray-light); font-weight: 500; font-size: 0.92rem;
-}
-.topnav nav a:hover { color: var(--gold); }
+/* Site nav (.topnav) lives in main.css — it is shared by every page. */
 
 /* ── generic inner-page shell ── */
 .page { position: relative; z-index: 1; flex: 1 0 auto; }
@@ -216,6 +199,4 @@
 @media (max-width: 720px) {
   .member-hero { grid-template-columns: 1fr; gap: 1.4rem; }
   .portrait { width: 150px; height: 150px; font-size: 3rem; }
-  .topnav nav { gap: 1rem; }
-  .topnav nav a.hide-sm { display: none; }
 }

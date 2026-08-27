@@ -25,8 +25,8 @@
         <span class="owl-icon">🦉</span><span>OpenOwls</span>
       </a>
       <nav>
-        <a href="../index.html" class="hide-sm">All apps</a>
-        <a href="../projects/">Projects</a>
+        <a href="../index.html">Home</a>
+        <a href="../projects/" aria-current="page">Projects</a>
         <a href="../people/">People</a>
       </nav>
     </div>
@@ -52,9 +52,10 @@
 
           <h1>Owl Jeopardy</h1>
           <p class="lede">
-            An AI-powered Jeopardy review game that builds its whole board straight
-            from a Canvas course — no manual question entry. Instructors point it at
-            a module; students play a live, buzzer-style review session minutes later.
+            A tool for building and sharing Jeopardy-style review games. Create your own
+            categories and clues, save them as reusable question banks, and share a game so
+            a class can play a live review round. Importing questions straight from a Canvas
+            course and auto-drafting them with Claude are planned for Phase 2.
           </p>
 
           <div class="stack-row">
@@ -74,20 +75,30 @@
 
         <!-- ── WHAT IT DOES ── -->
         <section class="section">
-          <span class="kicker">What it does</span>
-          <h2>Turns a course module into a game in one click</h2>
+          <span class="kicker">What it does today (Phase 1)</span>
+          <h2>Build a review game, then share it and play</h2>
           <p>
-            Review sessions usually mean an instructor hand-typing dozens of questions
-            into a slide template. Owl Jeopardy removes that step entirely. A teaching
-            assistant selects a Canvas module, and the app reads the module's pages,
-            assignments, and readings, then asks Claude to draft a balanced board —
-            five categories, five clues each, scaled by difficulty.
+            Owl Jeopardy lets anyone put together a Jeopardy-style review game without
+            wrestling with a slide template. You create the categories and clues, set the
+            point values, and save the result — then share it so a class can play a live
+            review round.
           </p>
           <ul>
-            <li><strong>Canvas-native:</strong> pulls real course content through the Canvas API, so questions actually match what was taught.</li>
-            <li><strong>Live &amp; multiplayer:</strong> teams buzz in over WebSockets from their own phones; the host screen keeps score in real time.</li>
-            <li><strong>Editable before play:</strong> the instructor can rewrite or swap any AI-drafted clue before the game starts.</li>
+            <li><strong>Build your own board:</strong> add categories and clues, set point values, and edit them any time.</li>
+            <li><strong>Reusable question banks:</strong> save a set of questions once and reuse or share it across games.</li>
+            <li><strong>Share &amp; play:</strong> hand a game to a class and run a live review round together.</li>
           </ul>
+        </section>
+
+        <section class="section">
+          <span class="kicker">What's next (Phase 2)</span>
+          <h2>Canvas import + AI-drafted boards</h2>
+          <p>
+            The next phase removes the manual entry step: point Owl Jeopardy at a Canvas
+            module and it reads the module's pages, assignments, and readings, then asks
+            Claude to draft a balanced board — categories and clues scaled by difficulty —
+            that an instructor can review and tweak before playing.
+          </p>
         </section>
 
         <!-- ── HOW IT'S BUILT ── -->
@@ -127,7 +138,7 @@
               <div class="contrib-head">
                 <div class="avatar">JR</div>
                 <div class="who">
-                  <div class="name">Jordan Rivera</div>
+                  <div class="name">John Doe</div>
                   <div class="role">Team lead · Front end</div>
                 </div>
               </div>
@@ -139,7 +150,7 @@
                 <span class="label">Biggest challenge</span>
                 <p>Fair buzz-in timing across phones on different networks. Solved it by timestamping buzzes on the server, not the client.</p>
               </div>
-              <a class="profile-link" href="../people/jordan-rivera.html">Read Jordan's profile →</a>
+              <a class="profile-link" href="../people/john-doe.html">Read Jordan's profile →</a>
             </div>
 
             <div class="contrib">
