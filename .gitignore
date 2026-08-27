@@ -8,3 +8,12 @@ Thumbs.db
 # Local dev servers
 node_modules/
 .cache/
+
+# Emacs backup files (ending with ~)
+*~
+
+# Emacs auto-save files (surrounded by #)
+\#*#
+
+# Emacs lock files (starting with .#)
+.#*
