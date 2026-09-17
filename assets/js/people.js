@@ -19,6 +19,11 @@
 
 window.OPENOWLS_PEOPLE = [
   {
+    name: "Mauricio Estrella",
+    slug: "mauricio-estrella",
+    role: "Contributor · Ask Clara, full-stack and LLM agents",
+  },
+  {
     name: "John Doe",
     slug: "john-doe",
     role: "Team Lead · Front-end",
