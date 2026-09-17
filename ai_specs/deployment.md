@@ -84,3 +84,15 @@ None currently. Cloudflare Pages' own build-and-deploy on push is the entire pip
 ## Secrets Management
 
 Not applicable — the site holds no secrets. Nothing sensitive is committed or configured.
+
+---
+
+## Self-registration (F9) — no deployment impact
+
+The F9 self-service profile form (`people/join.html`) is **fully static**: it runs in the
+browser, uses the GitHub avatar for the photo, and (in Chromium) writes the generated files
+into the contributor's own local clone via the File System Access API. It introduces **no
+backend, database, environment variables, or new hosting**, so nothing about the Cloudflare
+Pages deployment changes — no build command, no bindings, no extra setup. Contributions
+still arrive as ordinary pull requests to `main`, and Pages auto-deploys on merge. See
+`how-to-add-student-profile.md` for the contributor walkthrough.

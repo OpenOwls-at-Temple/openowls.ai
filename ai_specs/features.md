@@ -118,14 +118,27 @@ _Status: template built (`people/jordan-rivera.html`)._
 
 ## Phase 3 — Advanced / Stretch Features
 
-### F9: Contribution Workflow
+### F9: Contribution Workflow — Self-Service Profile
 **As a** student member,
 **I want** a low-friction, documented way to add my own profile,
 **So that** I can get on the site without needing the maintainer to write it for me.
 
 **Acceptance Criteria:**
-- [ ] A profile/project template file plus a short "how to add yourself" guide exists.
-- [ ] A new member can submit their page as a pull request by following the guide.
+- [x] A profile template plus a "how to add yourself" guide exist
+      (`people/john-doe.html` as the template; `how-to-add-student-profile.md` as the guide).
+- [x] A self-service form (`people/join.html`) generates a student's standalone profile
+      page **and** their People-list entry from a short form — no hand-written HTML.
+- [x] A new member submits their page as a pull request by following the guide; a
+      maintainer reviews and merges it (that merge is the moderation step).
+
+> **How it stays static:** the form runs entirely in the browser. The photo comes from
+> the student's GitHub avatar (no upload), and — in Chromium browsers — the
+> [File System Access API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API)
+> writes the two files straight into the student's local clone (with a Download fallback
+> elsewhere), then shows the git commands to open the PR. **No backend, database, or
+> server-side code is introduced** — this satisfies F9 while honoring the "fully static /
+> no backend" line in "Out of Scope" below. See `architecture-planning.md` and
+> `how-to-add-student-profile.md`.
 
 ---
 

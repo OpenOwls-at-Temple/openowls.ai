@@ -44,14 +44,30 @@ touch for content. Each entry:
 - **Moving an app's backend:** you do **not** edit this repo. The `url` stays
   the same; you just re-point the subdomain's DNS (see below).
 
+## Adding your student profile
+
+Students add themselves to the [People page](https://openowls.ai/people/) with a
+self-service form — no hand-written HTML. See
+**[how-to-add-student-profile.md](how-to-add-student-profile.md)** for the full
+walkthrough: clone the repo, fill in the form at `people/join.html`, run the git
+commands it generates, and open a pull request. It stays fully static — there's no
+backend; a maintainer just reviews and merges the PR.
+
 ## Local preview
 
-No server needed — just double-click `index.html`, or:
+Serve the folder with any static file server (don't just double-click the files —
+the pages under `people/` and `projects/`, including the two-panel readers and the
+Join form, load shared CSS/JS by path and only work over `http://`):
 
 ```bash
-# any static server works, e.g.
-python -m http.server 8000   # then visit http://localhost:8000
+# Node (works everywhere Node is installed)
+npx http-server . -p 8080 -c-1     # then visit http://localhost:8080
+
+# or Python, if you have it
+python -m http.server 8000          # then visit http://localhost:8000
 ```
+
+`-c-1` disables caching so your edits show up on refresh. Stop the server with Ctrl+C.
 
 ## Deploying (Cloudflare Pages)
 

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join the People page — OpenOwls at Temple</title>
+  <meta name="description" content="Add yourself to the OpenOwls at Temple People page — generate your profile page and open a pull request. A shareable page for your resume or LinkedIn." />
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/profile.css" />
+  <link rel="stylesheet" href="../assets/css/join.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <!-- ── TOP NAV ── -->
+  <header class="topnav">
+    <div class="wrap">
+      <a class="logo" href="../index.html">
+        <span class="owl-icon">🦉</span><span>OpenOwls</span>
+      </a>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="../projects/">Projects</a>
+        <a href="../people/" aria-current="page">People</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+      <p class="breadcrumb">
+        <a href="../index.html">Home</a><span>›</span>
+        <a href="../people/">People</a><span>›</span>
+        Join
+      </p>
+
+      <div class="join-hero">
+        <span class="kicker">Add yourself</span>
+        <h1>Get on the People page</h1>
+        <p>
+          Fill this in and we'll generate your profile page for you — then you open a
+          quick pull request (no coding, all in the browser). Once a maintainer merges
+          it, your profile is live: a shareable page you can drop into a resume,
+          LinkedIn, or a job application.
+        </p>
+      </div>
+
+      <form class="join-card" id="join-form" novalidate>
+        <div class="form-banner form-banner--error" id="form-error-banner" role="alert"></div>
+
+        <!-- ── branch ── -->
+        <div class="field-group">
+          <label for="branch-input">Branch name <span class="opt">(for your pull request)</span></label>
+          <input type="text" id="branch-input" name="branch" placeholder="add-your-name" autocomplete="off" spellcheck="false" />
+          <span class="hint">
+            The Git branch your change goes on, e.g. <code>add-alex-pang</code>.
+            Leave it blank and we'll name it for you. Letters, numbers, dashes.
+          </span>
+        </div>
+
+        <!-- ── photo (from GitHub) ── -->
+        <div class="field-group">
+          <label>Photo</label>
+          <div class="photo-field">
+            <div class="photo-preview" id="photo-preview" aria-hidden="true">?</div>
+            <p class="hint photo-hint">
+              Your photo comes from your <strong>GitHub avatar</strong> automatically —
+              just fill in your GitHub URL below and it'll appear here. Want a different
+              headshot? You can swap it in later; ask a maintainer.
+            </p>
+          </div>
+        </div>
+
+        <!-- ── name / role ── -->
+        <div class="field-group">
+          <div class="field-row">
+            <div>
+              <label for="name-input">Full name <span class="req">*</span></label>
+              <input type="text" id="name-input" name="name" required placeholder="Jamie Nguyen" autocomplete="name" />
+              <span class="error-text" data-error-for="name">Enter your full name.</span>
+            </div>
+            <div>
+              <label for="role-input">Role <span class="opt">(optional)</span></label>
+              <input type="text" id="role-input" name="role" placeholder="Team Lead · Front-end &amp; real-time systems" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── year / major ── -->
+        <div class="field-group">
+          <div class="field-row">
+            <div>
+              <label for="year-input">Year <span class="opt">(optional)</span></label>
+              <select id="year-input" name="year">
+                <option value="">Select…</option>
+                <option>Freshman</option>
+                <option>Sophomore</option>
+                <option>Junior</option>
+                <option>Senior</option>
+                <option>Graduate</option>
+              </select>
+            </div>
+            <div>
+              <label for="major-input">Major <span class="opt">(optional)</span></label>
+              <input type="text" id="major-input" name="major" placeholder="Computer Science" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── joined / looking for ── -->
+        <div class="field-group">
+          <div class="field-row">
+            <div>
+              <label for="joined-input">Joined <span class="opt">(optional)</span></label>
+              <input type="text" id="joined-input" name="joined" placeholder="Fall 2025" />
+            </div>
+            <div>
+              <label for="looking-input">Looking for <span class="opt">(optional)</span></label>
+              <input type="text" id="looking-input" name="looking_for" placeholder="Summer '26 internship" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── hero quote ── -->
+        <div class="field-group">
+          <label for="quote-input">In your own words <span class="opt">(optional — a short line shown up top)</span></label>
+          <textarea id="quote-input" name="quote" rows="2" placeholder="I like the messy middle of a project — the part where the demo works but nothing's clean yet."></textarea>
+          <span class="error-text" data-error-for="quote">Keep it under 400 characters.</span>
+        </div>
+
+        <!-- ── Who I am ── -->
+        <div class="field-group">
+          <label for="bio-input">Who I am <span class="opt">(A little about me)</span></label>
+          <textarea id="bio-input" name="bio" placeholder="How you got into building things, what you're studying, what you're into outside of code… (leave a blank line to start a new paragraph)"></textarea>
+          <span class="error-text" data-error-for="bio">Keep it under 2000 characters.</span>
+        </div>
+
+        <!-- ── What I bring ── -->
+        <div class="field-group">
+          <label for="strengths-input">What I bring <span class="opt">(My strengths — one per line)</span></label>
+          <textarea id="strengths-input" name="strengths" placeholder="Front-end that feels good: I care about the small interactions&#10;Real-time systems: WebSockets and the reconnect edge cases&#10;Keeping a team moving: stand-ups and honest scope"></textarea>
+          <span class="hint">One strength per line. Tip: write <code>Label: detail</code> and the label shows in bold, like the sample.</span>
+          <span class="error-text" data-error-for="strengths">Keep it under 1500 characters.</span>
+        </div>
+
+        <!-- ── How I use AI ── -->
+        <div class="field-group">
+          <label for="ai-input">How I work <span class="opt">(How I use AI)</span></label>
+          <textarea id="ai-input" name="ai_usage" placeholder="Your rhythm for building with AI — where it helps, where you stay in control… (blank line = new paragraph)"></textarea>
+          <span class="error-text" data-error-for="ai_usage">Keep it under 2000 characters.</span>
+        </div>
+
+        <div class="field-group">
+          <label for="ai-pull-input">A line worth pulling out <span class="opt">(optional — shown as a highlighted quote)</span></label>
+          <textarea id="ai-pull-input" name="ai_pull" rows="2" placeholder="AI got me to a working prototype fast — but understanding why it worked was still on me."></textarea>
+          <span class="error-text" data-error-for="ai_pull">Keep it under 400 characters.</span>
+        </div>
+
+        <!-- ── On the board (projects) ── -->
+        <div class="field-group">
+          <label id="projects-label">On the board <span class="opt">(Projects I'm involved with)</span></label>
+          <div class="project-picker" id="project-picker" aria-labelledby="projects-label">
+            <!-- populated from assets/js/projects.js by join.js -->
+          </div>
+        </div>
+
+        <!-- ── Proud of ── -->
+        <div class="field-group">
+          <label for="hard-input">Proud of <span class="opt">(A hard problem I cracked)</span></label>
+          <textarea id="hard-input" name="hard_problem" placeholder="A tricky bug or design problem you solved, and how you figured it out…"></textarea>
+          <span class="error-text" data-error-for="hard_problem">Keep it under 2000 characters.</span>
+        </div>
+
+        <!-- ── What's next ── -->
+        <div class="field-group">
+          <label for="next-input">What's next <span class="opt">(Where I'm headed)</span></label>
+          <textarea id="next-input" name="whats_next" placeholder="What you're looking for next — an internship, a kind of work, someone to pair with…"></textarea>
+          <span class="error-text" data-error-for="whats_next">Keep it under 2000 characters.</span>
+        </div>
+
+        <!-- ── required links ── -->
+        <div class="field-group">
+          <div class="field-row">
+            <div>
+              <label for="linkedin-input">LinkedIn <span class="req">*</span></label>
+              <input type="url" id="linkedin-input" name="linkedin_url" required placeholder="https://linkedin.com/in/you" autocomplete="url" />
+              <span class="error-text" data-error-for="linkedin_url">Enter your full LinkedIn profile URL.</span>
+            </div>
+            <div>
+              <label for="github-input">GitHub <span class="req">*</span></label>
+              <input type="url" id="github-input" name="github_url" required placeholder="https://github.com/you" autocomplete="url" />
+              <span class="error-text" data-error-for="github_url">Enter your full GitHub profile URL (https://github.com/username).</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="email-input">Email <span class="opt">(optional — shown as a contact link on your page)</span></label>
+          <input type="email" id="email-input" name="email" placeholder="you@temple.edu" autocomplete="email" />
+          <span class="error-text" data-error-for="email">That email address doesn't look right.</span>
+        </div>
+
+        <div class="join-submit-row">
+          <button type="submit" class="btn btn--join" id="submit-btn">
+            <span>Generate my profile</span><span aria-hidden="true">→</span>
+          </button>
+          <span class="submit-note">Nothing is published yet — this builds your files and shows you the next step.</span>
+        </div>
+      </form>
+
+      <!-- ── RESULT (revealed after Generate) ── -->
+      <section class="join-result" id="join-result" hidden aria-live="polite">
+        <div class="result-head">
+          <span class="kicker">Almost there</span>
+          <h2>Commit your profile and open a pull request</h2>
+          <p>
+            Your profile page and People-list entry were generated from what you entered.
+            Once your PR is merged, your page is live at <code id="live-url">…</code>.
+          </p>
+        </div>
+
+        <div class="form-banner is-shown" id="write-status">Preparing your files…</div>
+
+        <!-- fallback: add the files by hand (shown if the browser can't write locally) -->
+        <div class="step" id="manual-fallback" hidden>
+          <div class="step-head"><span class="step-num">!</span>
+            <h3>Add the files by hand</h3></div>
+          <p>
+            Your browser couldn't write into the repo folder automatically (that needs a
+            Chromium browser — Chrome or Edge — and permission to the folder). Download your
+            page, save it into your local clone, and add one line to the People list.
+          </p>
+          <div class="result-actions">
+            <button type="button" class="btn btn--join" id="download-html-btn">
+              ⬇ Download <span id="dl-name">your-name.html</span>
+            </button>
+            <button type="button" class="btn btn--ghost" id="copy-registry-btn" data-copy-target="registry-output">
+              Copy my People-list line
+            </button>
+          </div>
+          <p class="hint">
+            Save it as <code id="file-name">people/your-name.html</code>, then paste this
+            line just inside the <code>window.OPENOWLS_PEOPLE = [</code> block in
+            <code>assets/js/people.js</code>:
+          </p>
+          <pre class="code-block"><code id="registry-output"></code></pre>
+        </div>
+
+        <!-- git commands -->
+        <div class="step">
+          <div class="step-head"><span class="step-num">→</span>
+            <h3>Run these in your terminal</h3></div>
+          <p>From your local <code>openowls.ai</code> folder:</p>
+          <div class="result-actions">
+            <button type="button" class="btn btn--ghost" id="copy-git-btn" data-copy-target="git-output">
+              Copy commands
+            </button>
+          </div>
+          <pre class="code-block"><code id="git-output"></code></pre>
+          <p class="hint">
+            After <code>git push</code>, open your pull request here:
+            <a id="pr-link" href="#" target="_blank" rel="noopener">create the PR ↗</a>
+          </p>
+        </div>
+
+        <p class="result-foot">
+          A maintainer reviews and merges your PR — that's when your profile goes live.
+          <button type="button" class="btn btn--ghost" id="restart-btn">Start over</button>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-links">
+        <a href="../index.html">Home</a>
+        <a href="../projects/">Projects</a>
+        <a href="../people/">People</a>
+        <a href="https://github.com/OpenOwls-at-Temple">GitHub</a>
+      </div>
+      <div>© <span id="year">2026</span> OpenOwls at Temple University</div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/projects.js"></script>
+  <script src="../assets/js/join.js"></script>
+  <script>
+    (function () { var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear(); })();
+  </script>
+</body>
+</html>

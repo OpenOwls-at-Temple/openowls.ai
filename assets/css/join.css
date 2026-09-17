@@ -1,0 +1,174 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   OpenOwls — Join / self-registration form (people/join.html)
+   ───────────────────────────────────────────────────────────────────────
+   Static, no backend. The form generates a profile page + a people.js line
+   and hands the student a pull-request link. Uses the shared navy/gold
+   theme tokens from main.css — no new palette.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── intro ── */
+.join-hero { max-width: 680px; margin: 0.5rem 0 2rem; }
+.join-hero h1 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2rem, 5vw, 2.9rem); line-height: 1.05;
+  letter-spacing: -0.02em; margin: 0.4rem 0 0.8rem;
+}
+.join-hero p { color: var(--gray-light); line-height: 1.6; }
+
+/* ── the form card ── */
+.join-card {
+  max-width: 720px; background: var(--card-bg);
+  border: 1px solid var(--border); border-radius: 18px;
+  padding: 1.8rem; display: flex; flex-direction: column; gap: 1.3rem;
+}
+.field-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field-row > div { display: flex; flex-direction: column; gap: 0.4rem; }
+
+label {
+  font-size: 0.85rem; font-weight: 600; color: var(--white);
+  letter-spacing: 0.01em;
+}
+.req { color: var(--gold); }
+.opt { color: var(--gray); font-weight: 400; }
+.hint { font-size: 0.78rem; color: var(--gray); line-height: 1.5; }
+
+input, select, textarea {
+  width: 100%; font-family: var(--font-body); font-size: 0.95rem;
+  color: var(--white); background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 0.65rem 0.8rem; transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+textarea { min-height: 96px; resize: vertical; line-height: 1.5; }
+input::placeholder, textarea::placeholder { color: var(--gray); }
+input:focus, select:focus, textarea:focus {
+  outline: none; border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(245,197,24,0.18);
+}
+select { appearance: none; cursor: pointer; }
+
+/* ── validation ── */
+.error-text {
+  display: none; font-size: 0.78rem; color: #ff9b9b; font-weight: 600;
+}
+.field-group.has-error input,
+.field-group.has-error textarea,
+.field-row .has-error input {
+  border-color: #e05a5a; box-shadow: 0 0 0 3px rgba(224,90,90,0.15);
+}
+.has-error .error-text { display: block; }
+
+.form-banner {
+  display: none; border-radius: 10px; padding: 0.75rem 1rem;
+  font-size: 0.88rem; font-weight: 600;
+}
+.form-banner--error {
+  color: #ffcaca; background: rgba(224,90,90,0.12);
+  border: 1px solid rgba(224,90,90,0.4);
+}
+.form-banner.write-ok {
+  color: #bdf0c8; background: rgba(76,175,80,0.12);
+  border: 1px solid rgba(76,175,80,0.45);
+}
+/* neutral info state (used for "preparing / choose a folder" messages) */
+.form-banner.is-shown:not(.form-banner--error):not(.write-ok) {
+  color: var(--gray-light); background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border); font-weight: 500;
+}
+.form-banner.is-shown { display: block; }
+.form-banner code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em; background: rgba(0,0,0,0.25);
+  border-radius: 5px; padding: 0.05rem 0.35rem;
+}
+
+/* ── photo (github avatar) ── */
+.photo-field { display: flex; align-items: center; gap: 1.1rem; }
+.photo-preview {
+  width: 92px; height: 92px; flex-shrink: 0; border-radius: 16px;
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 2rem;
+  color: var(--navy); border: 1px solid var(--border);
+  background: linear-gradient(150deg, var(--gold) 0%, var(--gold-dim) 100%);
+}
+.photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+.photo-hint { margin: 0; }
+
+/* ── project picker ── */
+.project-picker { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.proj-toggle { position: relative; }
+.proj-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.proj-toggle span {
+  display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer;
+  font-size: 0.85rem; color: var(--gray-light);
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-radius: 999px; padding: 0.4rem 0.9rem; transition: all 0.14s ease;
+}
+.proj-toggle input:checked + span {
+  color: var(--navy); background: var(--gold); border-color: var(--gold); font-weight: 700;
+}
+.proj-toggle input:focus-visible + span { box-shadow: 0 0 0 3px rgba(245,197,24,0.3); }
+
+/* ── submit row ── */
+.join-submit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; margin-top: 0.4rem; }
+.submit-note { font-size: 0.78rem; color: var(--gray); }
+
+/* ── buttons ── */
+/* .btn, .btn--ghost and .btn--gold come from profile.css (loaded by this page);
+   we only add the form-specific variants here. */
+.btn { cursor: pointer; }
+.btn--join { background: var(--gold); color: var(--navy); border: 1px solid transparent; }
+.btn--join:hover { color: var(--navy); transform: translateY(-2px); filter: brightness(1.05); }
+.btn.is-copied { background: var(--gold-dim); color: var(--navy); }
+
+/* ── result panel ── */
+.join-result {
+  max-width: 720px; margin-top: 2.2rem; padding-top: 1.6rem;
+  border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 1.6rem;
+}
+.result-head h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(1.5rem, 4vw, 2rem); margin: 0.3rem 0 0.6rem;
+}
+.result-head p { color: var(--gray-light); line-height: 1.6; }
+.step {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.3rem 1.4rem; display: flex;
+  flex-direction: column; gap: 0.7rem;
+}
+.step-head { display: flex; align-items: center; gap: 0.7rem; }
+.step-num {
+  width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%;
+  background: var(--gold); color: var(--navy); font-weight: 800;
+  display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
+}
+.step-head h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 0; }
+.step p { color: var(--gray-light); line-height: 1.6; font-size: 0.92rem; }
+.step code, .result-head code, .result-foot code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em; background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border); border-radius: 6px; padding: 0.1rem 0.4rem;
+  color: var(--gold);
+}
+.result-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.result-details { margin-top: 0.2rem; }
+.result-details summary { cursor: pointer; font-size: 0.85rem; color: var(--gray-light); }
+.result-details summary:hover { color: var(--gold); }
+.code-block {
+  margin-top: 0.7rem; max-height: 320px; overflow: auto;
+  background: rgba(0,0,0,0.28); border: 1px solid var(--border);
+  border-radius: 10px; padding: 0.9rem 1rem;
+}
+.code-block code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem; line-height: 1.55; color: var(--gray-light);
+  white-space: pre; background: none; border: none; padding: 0;
+}
+.result-foot { font-size: 0.9rem; color: var(--gray-light); line-height: 1.7; }
+.result-foot .btn { margin-left: 0.4rem; }
+
+/* ── responsive ── */
+@media (max-width: 620px) {
+  .join-card { padding: 1.3rem; }
+  .field-row { grid-template-columns: 1fr; }
+}
