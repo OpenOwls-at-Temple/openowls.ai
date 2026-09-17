@@ -17,3 +17,6 @@ node_modules/
 
 # Emacs lock files (starting with .#)
 .#*
+
+# Cloudflare Wrangler / Miniflare local dev state
+.wrangler/

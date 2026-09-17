@@ -22,6 +22,7 @@ openowls.ai/
 ├── progress.md             # Living status board
 ├── batchrun.md             # N/A for this project (see file)
 ├── README.md               # Repo + deploy notes
+├── how-to-add-student-profile.md   # F9: student self-registration guide
 ├── index.html              # Home — the app card directory
 ├── 404.html
 ├── favicon.svg
@@ -30,19 +31,33 @@ openowls.ai/
 ├── ai_specs/               # The SDD specification (this folder)
 ├── assets/
 │   ├── css/
-│   │   ├── main.css        # Base theme (navy/gold), home + cards
-│   │   └── profile.css     # Project-detail + member-profile layouts
+│   │   ├── main.css        # Base theme (navy/gold), home + cards, top nav
+│   │   ├── profile.css     # Project-detail + member-profile layouts
+│   │   ├── reader.css      # Two-panel reader (F4)
+│   │   └── join.css        # Self-registration form (F9)
 │   └── js/
 │       ├── projects.js     # Registry of apps (drives home cards)
-│       └── render.js       # Renders home cards from the registry
+│       ├── people.js       # Member index (drives the People list)
+│       ├── render.js       # Renders home cards from the registry
+│       ├── reader.js       # Two-panel master-detail controller (F4)
+│       └── join.js         # Self-registration form logic (F9)
 ├── projects/               # Project detail pages (right-panel content)
+│   ├── index.html          # Projects two-panel reader (F4)
 │   └── owl-jeopardy.html
 └── people/                 # Member profile pages (right-panel content)
-    └── jordan-rivera.html
+    ├── index.html          # People two-panel reader (F4)
+    ├── join.html           # Self-registration form (F9)
+    └── john-doe.html       # Profile template / placeholder
 ```
 
-> Planned (Phase 1, F4): a `projects/` index and a `people/` index that present the
-> two-panel reader (list on the left, selected detail on the right).
+> **F4 two-panel readers** are built (`projects/index.html`, `people/index.html`,
+> `assets/js/reader.js`).
+>
+> **F9 self-registration** (`people/join.html` + `assets/js/join.js`) is a purely
+> client-side form: it generates a student's standalone profile page and their
+> `people.js` entry, and — in Chromium — writes both into the contributor's local clone
+> via the File System Access API, then shows the git commands to open a pull request.
+> No backend is introduced; the merged PR is the moderation step.
 
 ---
 
@@ -57,6 +72,7 @@ openowls.ai/
 | Detail pages | Standalone HTML that also serves as the right-panel content | One source of content, deep-linkable by URL. |
 | App hosting | Per-app subdomains via CNAME (not in this repo) | Each app deploys independently; the Hub only links out. |
 | Deep-linking | Selected item reflected in the URL (query/hash) | Makes each profile/project a shareable, resume-ready link (F3). |
+| Self-registration (F9) | Client-side form that generates the files + a PR (File System Access API in Chromium; Download fallback otherwise) | Lets students self-serve **without** adding a backend/DB — the site stays fully static; the merged PR is the review step. |
 
 ---
 

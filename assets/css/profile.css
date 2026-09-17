@@ -143,6 +143,10 @@
   letter-spacing: 0.05em; text-transform: uppercase;
   color: rgba(13,27,46,0.6);
 }
+/* When a real photo (e.g. a GitHub avatar) is present, let it fill the frame
+   and drop the "Headshot goes here" placeholder label. */
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
+.portrait:has(img)::after { content: none; }
 .member-hero h1 {
   font-family: var(--font-display); font-weight: 800;
   font-size: clamp(2.1rem, 5.5vw, 3.2rem); line-height: 1.03;
