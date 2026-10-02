@@ -28,4 +28,9 @@ window.OPENOWLS_PEOPLE = [
     slug: "mauricio-estrella",
     role: "Contributor · Ask Clara, full-stack and LLM agents",
   },
+  {
+    name: "wei lun chang",
+    slug: "wei-lun-chang",
+    role: "Team lead , LLM pipeline & backend integration & AI question generation",
+  },
 ];
